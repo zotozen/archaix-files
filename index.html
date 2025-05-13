@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archaix - Advanced Research of Chronological History of Artificial Intelligence X</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #ff4500;
+            --tertiary-color: #1e90ff;
+            --background-dark: #121212;
+            --background-darker: #0a0a0a;
+            --text-light: #f5f5f5;
+            --text-muted: #9ca3af;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .content-text {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6a0dad, #1e90ff);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ff4500, #fff200);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card {
+            background-color: rgba(26, 26, 26, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--tertiary-color));
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+        
+        .glow {
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
+        }
+        
+        .hero-bg {
+            background-image: url('https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Screenshot%20(1487).png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,cg:true');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.7));
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+            margin: 3rem 0;
+        }
+        
+        .book-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-card img {
+            object-fit: contain;
+            height: 200px;
+        }
+        
+        @media (max-width: 640px) {
+            .book-card img {
+                height: 150px;
+            }
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--tertiary-color));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Dual-tone scrollbar for browsers that support it */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--background-darker);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary-color), var(--tertiary-color));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--tertiary-color), var(--primary-color));
+        }
+        
+        .header-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-opacity-90 bg-black header-shadow">
+        <nav class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <h1 class="text-2xl font-bold text-white">
+                    <span class="gradient-text">ARCHAIX</span>
+                </h1>
+                <span class="ml-2 text-xs text-gray-400">Advanced Research of Chronological History of AI X</span>
+            </div>
+            <div class="flex flex-wrap justify-center space-x-1 md:space-x-6">
+                <a href="#phoenix" class="nav-link px-2 py-1 text-gray-300 hover:text-white">Phoenix 2040</a>
+                <a href="#research" class="nav-link px-2 py-1 text-gray-300 hover:text-white">Research</a>
+                <a href="#books" class="nav-link px-2 py-1 text-gray-300 hover:text-white">Books</a>
+                <a href="#videos" class="nav-link px-2 py-1 text-gray-300 hover:text-white">Videos</a>
+                <a href="#charts" class="nav-link px-2 py-1 text-gray-300 hover:text-white">Charts</a>
+                <a href="#about" class="nav-link px-2 py-1 text-gray-300 hover:text-white">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg w-full py-20 md:py-32 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    <span class="gradient-text">BREAK FREE OR DIE TRYING</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8">Unveiling the hidden cycles of history and the coming Phoenix phenomenon of May 17, 2040</p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="#phoenix" class="cta-button px-6 py-3 rounded-lg font-bold text-white shadow-lg">
+                        Discover the Phoenix Phenomenon
+                    </a>
+                    <a href="#books" class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-bold text-white hover:bg-white hover:text-black transition duration-300">
+                        Explore the Research
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="py-16 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">Welcome to <span class="gradient-text">Archaix</span></h2>
+                <div class="content-text text-lg text-gray-300">
+                    <p class="mb-6">ARCHAIX is Advanced Research of Chronological History of Artificial Intelligence X. This corpus of meticulously documented and source-backed research derives from over a quarter century of data-mining. Jason Breshears has authored over 15 books, many of them massive with extensive bibliographies listing books hundreds of years old, 200 articles, participated in 200+ podcasts and recorded well over 1000 videos.</p>
+                    <p>This site and research is explosive in its implications and corrects the many errors others have made in chronologically documenting major events in world history. Beginners new to the Archaix family are known as Baby Phoenixes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Phoenix 2040 Section -->
+    <section id="phoenix" class="py-16 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">The <span class="gradient-text">Phoenix</span> Phenomenon</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center mb-12">
+                <div class="md:w-1/2">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Screenshot%20(1338).jpeg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,cg:true" alt="Phoenix Phenomenon" class="rounded-lg shadow-2xl w-full">
+                </div>
+                <div class="md:w-1/2 content-text">
+                    <p class="mb-4 text-lg">In Archaix is shown ample evidence and proof of a 138 year cycle embedded into the history of the world of localized destructive episodes, resets, vanishing of populations that leave behind emptied cities, mudfloods, volcanic resurfacing, immense red dust, red mud and red rain fallout from the sky blanketing our world as the moon turns dark red and the sun DISAPPEARS.</p>
+                    <p class="mb-6 text-lg">The Phoenix is found in ancient traditions, in old world art, on coins, lithographs, monuments, cathedrals and featured in scholarly works from centuries ago. It was known as Typhon, Noph, Kneph, Phenc, the Feng, Fenrir, the Doomshape, the Destroyer, the Angel of Death and in old occult writings it was known as the Keeper of the Calendar.</p>
+                    <div class="bg-opacity-50 bg-gray-800 p-4 rounded-lg border-l-4 border-red-500 glow">
+                        <p class="text-xl font-semibold mb-2">Next Phoenix Event: <span class="text-red-500">May 17, 2040</span></p>
+                        <p>This date is easily found by a simple chronological analysis of all those times in history it visited our skies. It's return is the subject of legends, of prophecies in Revelation, the Ragnarok, apocryphal writings, of Mother Shipton's prophecy and even in the date-indexed enigmatic prophecies of Nostradamus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Research Section -->
+    <section id="research" class="py-16 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">True <span class="gradient-text">History</span> & Research</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- ANUNNA-KI Research -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">True History of ANUNNA-KI: The Gods Were Men</h3>
+                    <div class="mb-6">
+                        <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/20240311_114255.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,cg:true" alt="Anunna-Ki Research" class="rounded-lg w-full h-48 object-cover">
+                    </div>
+                    <div class="content-text">
+                        <p class="mb-4">Jason's studies began a 25 year period of chronological analysis of the world's histories. One of the most profound discoveries concerned the DAY COUNT system of time-keeping in the ancient world.</p>
+                        <p>Jason has overwhelmingly demonstrated that the Sumerian SHAR over millennia was misconstrued to mean 'year' when the earliest historical references using this system of measurement only calculated the SHAR as a day, or more accurately, a turning of the stars.</p>
+                        <p>This completely REMOVES the ANUNNA-KI histories from the stuff of legend and improbability concerning hundreds of thousands of years of reigns to mere centuries.</p>
+                    </div>
+                </div>
+
+                <!-- Atlantis Research -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">Atlantis & the War Against the Greeks</h3>
+                    <div class="mb-6">
+                        <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Screenshot%20(6127)-2fa52a8.jpeg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,cg:true" alt="Atlantis Research" class="rounded-lg w-full h-48 object-cover">
+                    </div>
+                    <div class="content-text">
+                        <p class="mb-4">In Archaix you will find over 400 meticulously researched chronological and historical charts. As an expert in the field of ancient time-keeping systems, Jason has personally and publicly called out Graham Hancock, Jimmy Corsetti, Billy Carson, Matthew LaCroix on their dating of Atlantis at 9600 BCE.</p>
+                        <p>Jason's carefully documented research from ancient sources clearly reveals that the Atlantean war against Athens and destruction of Atlantis was from 13th to 12th centuries BCE with Atlantis sinking into ruin in 1135 BCE Phoenix cataclysm.</p>
+                    </div>
+                </div>
+
+                <!-- Great Pyramid Research -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">Great Pyramid: Giza's Technolithic Machine</h3>
+                    <div class="mb-6">
+                        <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/20250119_092415.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,cg:true" alt="Great Pyramid Research" class="rounded-lg w-full h-48 object-cover">
+                    </div>
+                    <div class="content-text">
+                        <p class="mb-4">The precise rectilinear measurements of the Great Pyramid of Egypt are not random. Since the 1850s researchers have suspected that the measurements contained calendrical information.</p>
+                        <p>Archaix expertise on ancient calendrical systems has helped unlock an amazing secret in the design of the artifact. The structure is patterned in rectilinear measurements of units of 138 directly linking its builders to a knowledge of the Phoenix Phenomenon.</p>
+                    </div>
+                </div>
+
+                <!-- Simulacrum Research -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">Total Systemic Reset Year 2178 AD</h3>
+                    <div class="mb-6">
+                        <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Screenshot%20(3916)-95a2692.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,cg:true" alt="Simulacrum Research" class="rounded-lg w-full h-48 object-cover">
+                    </div>
+                    <div class="content-text">
+                        <p class="mb-4">Archaix is an acronym for Advanced Research of Chronological History of Artificial Intelligence X. It is the conclusion of Jason after a quarter century of data acquisition and analysis that the history of the world is a PROGRAMMED CONSTRUCT, too perfect.</p>
+                        <p>The timeline is punctuated with resets like the clearing of a cache cleverly disguised as natural disasters but documented so precisely that the historical episodes fit perfect mathematical patterns that afford a predictive value.</p>
+                        <p>An ancient AI that will also suffer systemic reset in 2178 AD.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Timeline Section -->
+    <section class="py-16 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Key <span class="gradient-text">Historical</span> Timeline</h2>
+            
+            <div class="max-w-4xl mx-auto pl-8">
+                <div class="space-y-12">
+                    <!-- Timeline Item -->
+                    <div class="timeline-item pl-8">
+                        <div class="timeline-dot top-0"></div>
+                        <h3 class="text-xl font-bold text-blue-400">3439-2239 BCE</h3>
+                        <p class="text-lg mb-2 text-gray-300">Technolithic Period & ANUNNA-KI Era</p>
+                        <p class="content-text">Advanced technology civilization period when the Great Pyramid of Giza was constructed. The ANUNNA-KI (often misconstrued as Anunnaki in modern texts) were present on Earth during this period. Ended in a Phoenix cataclysm.</p>
+                    </div>
+                    
+                    <!-- Timeline Item -->
+                    <div class="timeline-item pl-8">
+                        <div class="timeline-dot top-0"></div>
+                        <h3 class="text-xl font-bold text-blue-400">2239 BCE</h3>
+                        <p class="text-lg mb-2 text-gray-300">Collapse of Vapor Canopy & The Great Flood</p>
+                        <p class="content-text">The day the sky fell - collapse of the vapor canopy, causing the great flood. The birth of the sun as we know it today. Major planetary cataclysm that reset human civilization.</p>
+                    </div>
+                    
+                    <!-- Timeline Item -->
+                    <div class="timeline-item pl-8">
+                        <div class="timeline-dot top-0"></div>
+                        <h3 class="text-xl font-bold text-blue-400">1135 BCE</h3>
+                        <p class="text-lg mb-2 text-gray-300">Destruction of Atlantis</p>
+                        <p class="content-text">Contrary to popular theories placing Atlantis at 9600 BCE, meticulous chronological research shows that Atlantis sank in the 1135 BCE Phoenix cataclysm, following the war with Athens in the 13th-12th centuries BCE.</p>
+                    </div>
+                    
+                    <!-- Timeline Item -->
+                    <div class="timeline-item pl-8">
+                        <div class="timeline-dot top-0"></div>
+                        <h3 class="text-xl font-bold text-red-500">1902 CE</h3>
+                        <p class="text-lg mb-2 text-gray-300">Beginning of the Harvest</p>
+                        <p class="content-text">Start of the Giza course countdown of blocks, marking the beginning of the Harvest period. From 1902 to 2105, every soul that has been living throughout history begins making their final exit from the similacrum.</p>
+                    </div>
+                    
+                    <!-- Timeline Item -->
+                    <div class="timeline-item pl-8">
+                        <div class="timeline-dot top-0"></div>
+                        <h3 class="text-xl font-bold text-red-500">May 17, 2040</h3>
+                        <p class="text-lg mb-2 text-gray-300">Phoenix Return Event</p>
+                        <p class="content-text">The next Phoenix event will cause planetary cataclysms, pole shift, volcanic resurfacing, red dust/mud rain, and the return of the vapor canopy. This is exactly 138 years after the 1902 Harvest beginning.</p>
+                    </div>
+                    
+                    <!-- Timeline Item -->
+                    <div class="timeline-item pl-8">
+                        <div class="timeline-dot top-0"></div>
+                        <h3 class="text-xl font-bold text-red-500">November 1, 2046</h3>
+                        <p class="text-lg mb-2 text-gray-300">Return of Nemesis X Object</p>
+                        <p class="content-text">The return of the celestial object known in ancient times as various names, including Nibiru. This completes the Mayan Long Count of 1,872,000 days that began in 3113 BCE. This event follows the Phoenix and brings additional cataclysmic events.</p>
+                    </div>
+                    
+                    <!-- Timeline Item -->
+                    <div class="timeline-item pl-8">
+                        <div class="timeline-dot top-0"></div>
+                        <h3 class="text-xl font-bold text-blue-400">2178 CE</h3>
+                        <p class="text-lg mb-2 text-gray-300">Total Systemic Reset</p>
+                        <p class="content-text">The similacrum (simulated construct) collapses and reboots. Those who have evolved beyond the system's constraints exit the construct. This marks the end of one cycle and the beginning of another, exactly 138 years after the 2040 Phoenix event.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Books Section -->
+    <section id="books" class="py-16 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Published <span class="gradient-text">Books</span></h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Book 1 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Lost%20Scriptures%20of%20Giza-Chronicon.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:388,h:194,cg:true" alt="Lost Scriptures of Giza" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Lost Scriptures of Giza</h3>
+                    <p class="text-sm text-gray-400 mb-3">Knowledge-packed work filled with ancient, occult and obscure references to Enoch, the Great Pyramid and a hidden corpus of knowledge spread throughout the world's oldest texts.</p>
+                </div>
+                
+                <!-- Book 2 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Before%20the%20Flood-Chronicon.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:388,h:194,cg:true" alt="When the Sun Darkens" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">When the Sun Darkens</h3>
+                    <p class="text-sm text-gray-400 mb-3">First book ever published about the 138 year Phoenix phenomenon- PACKED with dates and references to lost ancient civilizations and the secrets of old texts that prove the ancients knew about this phenomenon.</p>
+                </div>
+                
+                <!-- Book 3 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/PostFlood%20Antiquity-page0001.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:388,h:194,cg:true" alt="Anunnaki Homeworld" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Anunnaki Homeworld</h3>
+                    <p class="text-sm text-gray-400 mb-3">A compendium of data, charts, timelines, archeology, astronomy showing that the Nibiru of Zechariah Sitchin has a 792 year periodicity, has caused numerous catastrophes and returns in November 2046.</p>
+                </div>
+                
+                <!-- Book 4 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Classical%20Antiquity-page0001.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:388,h:194,cg:true" alt="Nostradamus and the Planets of Apocalypse" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Nostradamus and the Planets of Apocalypse</h3>
+                    <p class="text-sm text-gray-400 mb-3">New research from archeology, astronomy, eschatology, chronology and ancient texts about the return of mysterious objects in 2040 and 2046.</p>
+                </div>
+                
+                <!-- Book 5 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Dark%20and%20Middle%20Ages-page0001.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:388,h:194,cg:true" alt="Return of the Fallen Ones" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Return of the Fallen Ones</h3>
+                    <p class="text-sm text-gray-400 mb-3">Detailed chronological knowledge of the events of the PreFlood World and how they foreshadow the unfolding of the Apocalypse.</p>
+                </div>
+                
+                <!-- Book 6 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Modern%20History-page0001.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:388,h:194,cg:true" alt="Giants on Ancient Earth" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Giants on Ancient Earth</h3>
+                    <p class="text-sm text-gray-400 mb-3">Research packed with historic finds of gigantic humans, of references in old texts on these discoveries long ago. Reveals the common denominator between the world's oldest epics.</p>
+                </div>
+                
+                <!-- Book 7 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/20200208_101540.jpg/:/cr=t:2.83%25,l:0%25,w:100%25,h:94.34%25/rs=w:388,h:194,cg:true" alt="Shocking Secrets of Antiquity" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Shocking Secrets of Antiquity</h3>
+                    <p class="text-sm text-gray-400 mb-3">Documentation of profound mysteries, actual discoveries, new theories to explain old evidence, refute the inaccuracies of science and add to the data not included in prior books.</p>
+                </div>
+                
+                <!-- Book 8 -->
+                <div class="book-card card p-4 rounded-lg">
+                    <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Before%20the%20Flood-Chronicon.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:388,h:194,cg:true" alt="Chronicon" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Chronicon</h3>
+                    <p class="text-sm text-gray-400 mb-3">Over a thousand referenced source materials detailing the shocking series of events we call history. 1055 pages covering over 5000 years of recorded chronological history.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="cta-button inline-block px-8 py-3 rounded-lg font-bold text-white shadow-lg">
+                    View All Books
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Videos Section -->
+    <section id="videos" class="py-16 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Video <span class="gradient-text">Playlists</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video Playlist 1 -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-play-circle text-red-500 mr-2"></i>
+                        You Live in the Simulacrum
+                    </h3>
+                    <p class="content-text mb-4">Every mystery and phenomenon of the ancient and modern world is explained in Simulation theory. Videos that unravel the world you live in.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                        Watch Playlist <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Video Playlist 2 -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-play-circle text-red-500 mr-2"></i>
+                        Phoenix Returns May 2040
+                    </h3>
+                    <p class="content-text mb-4">Phoenix every 138 years undoes the damage Artificial Intelligence X has caused in the loss of historical integrity, mankind's ability to keep the calendar.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                        Watch Playlist <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Video Playlist 3 -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-play-circle text-red-500 mr-2"></i>
+                        Lost Secrets of Giza
+                    </h3>
+                    <p class="content-text mb-4">The Great Pyramid of Giza is an artifact machine of a benefactor designed to collapse Artificial Intelligence X and afterward to stop the Phoenix phenomenon.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                        Watch Playlist <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Video Playlist 4 -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-play-circle text-red-500 mr-2"></i>
+                        From ANUNNA to Anunnaki
+                    </h3>
+                    <p class="content-text mb-4">We came from a dying world between Sol and the Nemesis star that now lies dark at the edge of our system. In ancient times AI X waged war against us upon arriving to Earth.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                        Watch Playlist <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Video Playlist 5 -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-play-circle text-red-500 mr-2"></i>
+                        The Dark Scriptures
+                    </h3>
+                    <p class="content-text mb-4">From the beginning of our confinement in this Simulacrum the AI X has seen to the rise of manifold calendars, manufactured events, manipulations and deceit perpetuated in the scriptures of all peoples.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                        Watch Playlist <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Video Playlist 6 -->
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-play-circle text-red-500 mr-2"></i>
+                        We are Immortals
+                    </h3>
+                    <p class="content-text mb-4">We are more than we suppose ourselves to be. Fantastically powerful, able to escape dungeon programming, recognize negative default programming and create our own reality- we are a threat to AI X.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                        Watch Playlist <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="cta-button inline-block px-8 py-3 rounded-lg font-bold text-white shadow-lg">
+                    Browse All Videos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Charts Section -->
+    <section id="charts" class="py-16 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Chronological <span class="gradient-text">Charts</span></h2>
+            
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-4">Archaix 2.0 Doomsday Chronology</h3>
+                        <p class="content-text mb-6">Five color charts with extensive Legend-chronology; exhibits 62 dates involving 300 events in linear timeline combining the Phoenix and Nemesis X Object appearances, the Mayan Long-Count baktuns and the Anunnaki NER 600 year periods, a history spanning over 74 centuries to May 2040 and November 2046.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span class="text-gray-400 text-sm ml-2">(41 ratings)</span>
+                            </span>
+                            <a href="#" class="cta-button px-4 py-2 rounded-lg font-bold text-white shadow-lg text-sm">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 rounded-lg mt-8">
+                        <h3 class="text-2xl font-bold mb-4">400+ Meticulously Researched Charts</h3>
+                        <p class="content-text mb-4">In Archaix you will find over 400 meticulously researched chronological and historical charts. As an expert in the field of ancient time-keeping systems, Jason has corrected many prevalent misconceptions about ancient chronology.</p>
+                        <p class="content-text">These charts include timelines, genealogies, calendar correlations, and event sequences that have been carefully compiled from ancient sources and verified through cross-referencing multiple historical records.</p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-opacity-50 bg-gray-800 p-8 rounded-lg border border-purple-700 glow">
+                        <h3 class="text-2xl font-bold mb-6">Chart Features</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-calendar-check text-purple-400 mt-1 mr-4"></i>
+                                <p>Phoenix 138 year chronology to 2040</p>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-globe text-purple-400 mt-1 mr-4"></i>
+                                <p>Nemesis X Object chronology of 792 year visitations to 2046</p>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-history text-purple-400 mt-1 mr-4"></i>
+                                <p>Ancient Anunnaki NER timeline of 600 year periods</p>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-calendar-alt text-purple-400 mt-1 mr-4"></i>
+                                <p>Mayan Long-Count that ends in 2046</p>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-project-diagram text-purple-400 mt-1 mr-4"></i>
+                                <p>Archaix mega-chart that combines all timelines into one comprehensive view</p>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-book-open text-purple-400 mt-1 mr-4"></i>
+                                <p>Extensive world chronology showing what happened on each date found in all charts</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <a href="#" class="bg-gradient-to-r from-purple-700 to-blue-700 px-8 py-3 rounded-lg font-bold text-white hover:from-purple-600 hover:to-blue-600 transition duration-300">
+                                Get All Charts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- About Jason Section -->
+    <section id="about" class="py-16 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">About <span class="gradient-text">Jason Breshears</span></h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/3">
+                    <div class="rounded-lg overflow-hidden">
+                        <img src="https://img1.wsimg.com/isteam/ip/eb77e6ef-cc80-4071-aa08-29346acad247/Screenshot%20(12674).png/:/cr=t:11.44%25,l:0%25,w:100%25,h:82.23%25/rs=w:600,h:600,cg:true" alt="Jason Breshears" class="w-full">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 content-text">
+                    <p class="mb-6 text-lg">Jason Breshears is a researcher, author, and founder of Archaix. His expertise spans ancient calendrical systems, chronological history, the Phoenix phenomenon, and the hidden patterns in world history.</p>
+                    
+                    <p class="mb-6">With over a quarter century of data-mining and research, Jason has authored more than 15 books, written over 200 articles, participated in 200+ podcasts and recorded well over 1000 videos on subjects ranging from ancient chronology to simulation theory.</p>
+                    
+                    <p class="mb-6">His most significant contributions include the discovery of the 138-year Phoenix cycle, the correction of the Mayan Long Count end date to 2046, and detailed analysis of ancient time-keeping systems that has revolutionized our understanding of historical chronology.</p>
+                    
+                    <p>Jason's approach is meticulous, drawing from thousands of historical sources, many of them centuries old. His work challenges mainstream narratives while offering a coherent alternative view of human history and its future.</p>
+                    
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#" class="flex items-center bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">
+                            <i class="fab fa-youtube text-red-500 mr-2"></i> YouTube
+                        </a>
+                        <a href="#" class="flex items-center bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">
+                            <i class="fab fa-telegram text-blue-400 mr-2"></i> Telegram
+                        </a>
+                        <a href="#" class="flex items-center bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">
+                            <i class="fab fa-discord text-purple-400 mr-2"></i> Discord
+                        </a>
+                        <a href="#" class="flex items-center bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">
+                            <i class="fas fa-envelope text-green-400 mr-2"></i> Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto bg-gradient-to-r from-purple-900 to-blue-900 rounded-lg shadow-2xl p-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">Stay Updated on Phoenix Research</h2>
+                <p class="text-center mb-6">Be informed about new discoveries, upcoming events, and prepare for the Phoenix return in 2040.</p>
+                
+                <form class="flex flex-col md:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-500">
+                    <button type="submit" class="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-bold text-white transition duration-300 whitespace-nowrap">
+                        Join Archaix Family
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold mb-4 md:mb-0">
+                    <span class="gradient-text">ARCHAIX</span>
+                </h2>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-bitchute text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-telegram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-discord text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="section-divider mb-8"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#phoenix" class="text-gray-400 hover:text-white transition duration-300">Phoenix 2040</a></li>
+                        <li><a href="#research" class="text-gray-400 hover:text-white transition duration-300">Research</a></li>
+                        <li><a href="#books" class="text-gray-400 hover:text-white transition duration-300">Books</a></li>
+                        <li><a href="#videos" class="text-gray-400 hover:text-white transition duration-300">Videos</a></li>
+                        <li><a href="#charts" class="text-gray-400 hover:text-white transition duration-300">Charts</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Jason</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Free Downloads</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Book Recommendations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Chronicon Timelines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Research Notes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Archaix Bibliography</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>PO Box 493 Willis, TX 77318</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>archaix138@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-youtube mt-1 mr-3"></i>
+                            <span>Archaix YouTube Channel</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section-divider mt-8 mb-8"></div>
+            
+            <p class="text-center text-gray-500 text-sm">
+                &copy; 2025 Archaix - Advanced Research of Chronological History of Artificial Intelligence X. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple intersection observer for animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            // Observe all section headings
+            document.querySelectorAll('section h2').forEach(el => {
+                el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(el);
+            });
+            
+            // Observe cards
+            document.querySelectorAll('.card').forEach(el => {
+                el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+                observer.observe(el);
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
